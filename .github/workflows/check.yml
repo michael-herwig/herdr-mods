@@ -1,0 +1,22 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Installs ocx and puts every tool locked in ocx.toml / ocx.lock on PATH:
+      # herdr-app, herdr-core, node.
+      - uses: ocx-sh/setup-ocx@v1
+      - name: The lock matches ocx.toml
+        run: ocx lock --check
+      - name: Every piece loads in Herdr
+        run: node scripts/check.mjs

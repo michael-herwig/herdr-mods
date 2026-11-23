@@ -1,0 +1,3 @@
+ocx.lock merge=union
+*.sh text eol=lf
+*.py text eol=lf

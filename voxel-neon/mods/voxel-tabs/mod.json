@@ -1,0 +1,8 @@
+{
+  "place": "none",
+  "title": "Tabs",
+  "cloned_from": {
+    "name": "tabs-bar",
+    "version": "0.1.16"
+  }
+}

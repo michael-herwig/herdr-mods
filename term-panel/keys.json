@@ -1,0 +1,20 @@
+{
+  "layout:my-layout": {
+    "ctrl-'": "term-panel.toggle",
+    "ctrl-shift-'": "term-panel.new",
+    "ctrl-\"": "term-panel.new",
+    "ctrl-shift-down": "term-panel.focus",
+    "ctrl-shift-up": "term-panel.back",
+    "alt-1": "term-panel.space-1",
+    "alt-2": "term-panel.space-2",
+    "alt-3": "term-panel.space-3",
+    "alt-4": "term-panel.space-4",
+    "alt-5": "term-panel.space-5",
+    "alt-6": "term-panel.space-6",
+    "alt-7": "term-panel.space-7",
+    "alt-8": "term-panel.space-8",
+    "alt-9": "term-panel.space-9",
+    "ctrl-shift-pagedown": "term-panel.space-next",
+    "ctrl-shift-pageup": "term-panel.space-prev"
+  }
+}
