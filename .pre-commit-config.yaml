@@ -1,0 +1,18 @@
+# Run by prek (`task setup` installs the hooks). Every tool comes from ocx.toml.
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks (staged)
+        entry: ocx exec -g lint -- gitleaks git --staged --redact --no-banner
+        language: system
+        stages: [pre-commit]
+        pass_filenames: false
+        always_run: true
+      - id: build-check
+        name: built main.js matches src/
+        entry: ocx exec -- task build:check
+        language: system
+        stages: [pre-commit]
+        pass_filenames: false
+        always_run: true

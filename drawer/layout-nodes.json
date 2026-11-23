@@ -1,0 +1,64 @@
+{
+  "panel": {
+    "id": "drawer",
+    "type": "row",
+    "children": [
+      {
+        "id": "drawer-view",
+        "type": "stack",
+        "children": [
+          {
+            "id": "drawer-empty",
+            "type": "block",
+            "content": {
+              "mod": "drawer",
+              "props": {
+                "role": "empty"
+              }
+            }
+          }
+        ],
+        "active": "drawer-empty"
+      },
+      {
+        "id": "drawer-list",
+        "type": "block",
+        "content": {
+          "mod": "drawer",
+          "props": {
+            "role": "list"
+          }
+        },
+        "size": {
+          "px": 230
+        },
+        "min": 150,
+        "max": 420
+      }
+    ],
+    "size": {
+      "px": 320
+    },
+    "min": 120,
+    "max": 900,
+    "hidden": true,
+    "background": "background",
+    "border": {
+      "width": 1,
+      "color": "border"
+    }
+  },
+  "toggle": {
+    "id": "drawer-toggle",
+    "type": "block",
+    "content": {
+      "mod": "drawer",
+      "props": {
+        "role": "toggle"
+      }
+    },
+    "size": {
+      "px": 82
+    }
+  }
+}

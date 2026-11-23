@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # gitleaks scans the whole history.
+          fetch-depth: 0
+      # Installs ocx and puts every tool locked in ocx.toml / ocx.lock on PATH:
+      # task, node, pnpm, herdr-app, herdr-core, and the lint group.
+      - uses: ocx-sh/setup-ocx@v1
+      # The same gate as locally: lock, dependencies, built files fresh, types,
+      # every mod loaded by Herdr, workflow lint, secrets.
+      - run: task verify

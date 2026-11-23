@@ -1,0 +1,20 @@
+{
+  "layout:my-layout": {
+    "ctrl-'": "drawer.toggle",
+    "ctrl-shift-'": "drawer.new",
+    "ctrl-\"": "drawer.new",
+    "ctrl-shift-down": "drawer.focus",
+    "ctrl-shift-up": "drawer.back",
+    "alt-1": "drawer.space-1",
+    "alt-2": "drawer.space-2",
+    "alt-3": "drawer.space-3",
+    "alt-4": "drawer.space-4",
+    "alt-5": "drawer.space-5",
+    "alt-6": "drawer.space-6",
+    "alt-7": "drawer.space-7",
+    "alt-8": "drawer.space-8",
+    "alt-9": "drawer.space-9",
+    "ctrl-shift-pagedown": "drawer.space-next",
+    "ctrl-shift-pageup": "drawer.space-prev"
+  }
+}

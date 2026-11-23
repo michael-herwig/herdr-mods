@@ -1,0 +1,18 @@
+herdr-mods
+Copyright 2026 Michael Herwig
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This repository contains work derived from other projects:
+
+- Herdr (https://github.com/herdrdev/herdr-app), Apache License 2.0.
+  The mods neon, neon-agents, neon-changes, neon-files, neon-pane, neon-status
+  and neon-tabs are derived from mods shipped with Herdr 0.1.16
+  (workspace-chrome, agents, changes, files, pane, status-bar, tabs-bar), and
+  types/herdr.d.ts is a copy of the declarations Herdr writes to its home.
+  Changes: restyled with square corners, 2px lines and the Neon theme's colors;
+  converted to TypeScript sources.
+
+- Over9k nested-tabs sidebar, MIT License.
+  The mod neon-spaces and its scripts claude-info.py and subagents.sh are derived
+  from it. Its license is kept at neon/mods/neon-spaces/LICENSE-over9k.

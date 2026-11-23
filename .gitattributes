@@ -1,3 +1,4 @@
+# One line ending everywhere: the built main.js must be byte-identical on every machine.
+* text=auto eol=lf
+*.png binary
 ocx.lock merge=union
-*.sh text eol=lf
-*.py text eol=lf

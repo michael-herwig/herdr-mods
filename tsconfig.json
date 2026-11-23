@@ -1,0 +1,22 @@
+{
+  // The mods written here, and what they share. Strict, as far as the runtime allows.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    // No DOM, no Node: a mod's globals are the ones types/gpui-kit.d.ts declares.
+    "lib": ["ES2022"],
+    "types": [],
+    "strict": true,
+    // As in the jsconfig.json Herdr writes: a view sets its state in init(), which
+    // TypeScript cannot see as definite assignment the way it sees a constructor.
+    "strictNullChecks": false,
+    // A declared field must not be re-defined after the base constructor ran init().
+    "useDefineForClassFields": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "paths": { "herdr": ["./types/herdr.d.ts"] }
+  },
+  "include": ["types/gpui-kit.d.ts", "src/lib", "src/drawer", "src/neon"]
+}

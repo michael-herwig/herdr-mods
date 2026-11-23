@@ -1,0 +1,16 @@
+{
+  "name": "herdr-mods",
+  "private": true,
+  "description": "Mods and layouts for the Herdr desktop app",
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}

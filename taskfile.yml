@@ -1,0 +1,81 @@
+# Every command runs with the tools ocx.toml pins: `ocx exec -- task <name>`
+# (or plain `task <name>` in a shell where ocx has activated the project).
+# Tools of the lint group are reached with `ocx exec -g lint --`.
+version: '3'
+
+tasks:
+  default:
+    desc: List the tasks
+    cmds:
+      - task --list
+    silent: true
+
+  deps:
+    desc: Install the dependencies pnpm-lock.yaml pins
+    cmds:
+      - pnpm install --frozen-lockfile
+
+  setup:
+    desc: Install the dependencies and the git hooks
+    cmds:
+      - task: deps
+      - ocx exec -g lint -- prek install
+
+  build:
+    desc: Build every mod's main.js from src/
+    cmds:
+      - node scripts/build.ts
+
+  build:check:
+    desc: Fail when a committed main.js is not what src/ builds
+    cmds:
+      - node scripts/build.ts --check
+
+  types:
+    desc: Write types/gpui-kit.d.ts from the pinned Herdr
+    cmds:
+      - node scripts/types.ts
+
+  typecheck:
+    desc: Type-check the sources against the pinned Herdr's declarations
+    deps: [types]
+    cmds:
+      - pnpm exec tsc -p tsconfig.json
+      - pnpm exec tsc -p tsconfig.scripts.json
+
+  check:
+    desc: Validate every piece and have Herdr load and render each mod
+    cmds:
+      - node scripts/check.ts
+
+  secrets:
+    desc: Scan the history and the working tree for secrets
+    cmds:
+      - ocx exec -g lint -- gitleaks git --redact --no-banner
+      - ocx exec -g lint -- gitleaks dir --redact --no-banner .
+
+  lock:check:
+    desc: Fail when ocx.lock does not match ocx.toml
+    cmds:
+      - ocx lock --check
+
+  lint:actions:
+    desc: Lint the GitHub workflows
+    cmds:
+      - ocx exec -g lint -- actionlint
+
+  verify:
+    desc: Full local gate, the same sequence CI runs
+    cmds:
+      - task: lock:check
+      - task: deps
+      - task: build:check
+      - task: typecheck
+      - task: check
+      - task: lint:actions
+      - task: secrets
+
+  install:
+    desc: Copy the built pieces into your Herdr home (mods and themes; a layout only if you have none of that name)
+    cmds:
+      - node scripts/install.ts {{.CLI_ARGS}}

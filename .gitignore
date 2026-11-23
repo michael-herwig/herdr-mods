@@ -1,5 +1,5 @@
+node_modules/
 # Herdr writes these next to every mod it loads, from the version that is running.
 gpui-kit.d.ts
 jsconfig.json
 /herdr-shot.png
-node_modules/
